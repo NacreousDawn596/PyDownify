@@ -19,13 +19,12 @@ def download(name):
 	allstuff = getUrl(name)
 	url, title = allstuff['url'], allstuff['name'].replace('|', '')
 	YouTube(url).streams.filter(progressive=True, file_extension='mp4').first().download()
-	mp4_file, mp3_file = rf'{title}.mp4', rf'{title}.mp3'
+	mp4_file, mp3_file = rf'{title}.mp4', rf'playlist_name/{title}.mp3'
 	audioclip = VideoFileClip(mp4_file).audio
 	audioclip.write_audiofile(mp3_file)
 	audioclip.close()
 	videoclip.close()
 	os.remove(f"{title}.mp4")
-	os.system(f'mv {title}.mp4 {playlist_name}')
 for track in result['tracks']['items']:
 	print(f"downloading ", end='')
 	try:
