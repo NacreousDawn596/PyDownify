@@ -21,3 +21,12 @@ python3 main.py https://open.spotify.com/playlist/3n7Vqt**********y3hRpE
 ```
 
 _enjoy_!
+
+# new (and maybe unique) feature ;-; :
+
+it supports now *Android* (termux) too ! ;)
+
+and the playlists are displayed on you file manager on a folder named "PyDownify"
+so yeah, that's all...
+
+@android_users ***enjoy!*** lol
