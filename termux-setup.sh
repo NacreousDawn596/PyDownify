@@ -4,13 +4,7 @@ sleep 1
 
 pkg install python curl
 
-
-
-
-
-
-
-
+clear
 
 echo "downloading python libs..."
 
