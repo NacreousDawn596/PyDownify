@@ -2,7 +2,7 @@ echo "downloading dependencies..."
 
 sleep 1
 
-pkg install python python-pip curl
+pkg install python curl
 
 clear
 
