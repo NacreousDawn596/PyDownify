@@ -2,7 +2,7 @@ echo "downloading dependencies..."
 
 sleep 1
 
-pkg install python curl
+pkg install python curl ffmpeg
 
 clear
 
