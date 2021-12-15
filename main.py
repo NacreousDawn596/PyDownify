@@ -27,7 +27,6 @@ def download(name):
 	audioclip = VideoFileClip(mp4_file).audio
 	audioclip.write_audiofile(mp3_file)
 	audioclip.close()
-	videoclip.close()
 	os.remove(f"{title}.mp4")
 for track in result['tracks']['items']:
 	print(f"downloading ", end='')
