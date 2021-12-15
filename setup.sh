@@ -7,6 +7,6 @@ clear
 sudo pacman -S python3 python3-pip curl
 clear
 echo "downloading python libs..."
-pip instal requirements.txt
+pip install -r requirements.txt
 clear
 echo "done!"
