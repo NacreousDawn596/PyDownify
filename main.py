@@ -10,7 +10,6 @@ infos = os.popen(f'curl -s {playlist}').read()
 uh, mm = infos.split("Spotify.Entity = ")[1].split('M","ZW"]};')[0], 'M","ZW"]}'
 result = json.loads(f'{uh}{mm}')
 playlist_name = result['name']
-os.system(f"mkdir {playlist_name}")
 def getUrl(name):
 	videosSearch = VideosSearch(name, limit = 1)
 	print(videosSearch.result()['result'][0]['title'], "...")
@@ -19,7 +18,12 @@ def download(name):
 	allstuff = getUrl(name)
 	url, title = allstuff['url'], allstuff['name'].replace('|', '')
 	YouTube(url).streams.filter(progressive=True, file_extension='mp4').first().download()
-	mp4_file, mp3_file = rf'{title}.mp4', rf'playlist_name/{title}.mp3'
+	if os.popen("uname -o") == "Android":
+		os.system(f"mkdir sdcard/{playlist_name}/")
+		mp4_file, mp3_file = rf'{title}.mp4', rf'/sdcard/PyDownify/{playlist_name}/{title}.mp3'
+	else:
+		os.system(f"mkdir {playlist_name}")
+		mp4_file, mp3_file = rf'{title}.mp4', rf'{playlist_name}/{title}.mp3'
 	audioclip = VideoFileClip(mp4_file).audio
 	audioclip.write_audiofile(mp3_file)
 	audioclip.close()
