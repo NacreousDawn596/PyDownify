@@ -24,15 +24,18 @@ def getUrl(name):
 def download(name):
 	allstuff = getUrl(name)
 	url, title = allstuff['url'], allstuff['name'].replace('|', '')
-	YouTube(url).streams.filter(progressive=True, file_extension='mp4').first().download()
-	try:
-		mp4_file, mp3_file = rf'{title}.mp4', rf'{playlist_name}/{title}.mp3'
-		audioclip = VideoFileClip(mp4_file).audio
-		audioclip.write_audiofile(mp3_file)
-		audioclip.close()
-	except:
-		os.system(f'ffmpeg -i {title}.mp4 -q:a 0 -map a {playlist_name}/{title}.mp3')
-	os.remove(f"{title}.mp4")
+	if f"{title}.mp3" in os.popen(f'ls "{playlist_name}"').read():
+		return
+	else:
+		YouTube(url).streams.filter(progressive=True, file_extension='mp4').first().download()
+		try:
+			mp4_file, mp3_file = rf'{title}.mp4', rf'{playlist_name}/{title}.mp3'
+			audioclip = VideoFileClip(mp4_file).audio
+			audioclip.write_audiofile(mp3_file)
+			audioclip.close()
+		except:
+			os.system(f'ffmpeg -i {title}.mp4 -q:a 0 -map a {playlist_name}/{title}.mp3')
+		os.remove(f"{title}.mp4")
 for track in result['tracks']['items']:
 	title = VideosSearch(track['track']['name'], limit = 1).result()['result'][0]['title']
 	print(f"downloading ", end='')
@@ -44,4 +47,5 @@ for track in result['tracks']['items']:
 			os.system(f'rm *.mp4')
 		except:
 			os.system(f'rm "{playlist_name}/{title}.mp3"')
+		os.system(f'echo "{title}" >> "{playlist_name}/.fail.txt"')
 		print(track['track']['name'], ': {"statut": "the download encountred some errors, please retry later"}')
