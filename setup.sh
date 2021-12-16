@@ -7,6 +7,6 @@ clear
 sudo pacman -S python3 python3-pip curl ffmpeg
 clear
 echo "downloading python libs..."
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 clear
 echo "done!"
