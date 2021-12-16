@@ -23,7 +23,7 @@ def getUrl(name):
 	return {'url': videosSearch.result()['result'][0]['link'], 'name': videosSearch.result()['result'][0]['title']}
 def download(name):
 	allstuff = getUrl(name)
-	url, title = allstuff['url'], allstuff['name'].replace('|', '')
+	url, title = allstuff['url'], allstuff['name'].replace('|', '').replace('.', '').replace(',', '')
 	if f"{title}.mp3" in os.popen(f'ls "{playlist_name}"').read():
 		return
 	else:
