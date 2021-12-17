@@ -39,7 +39,7 @@ def download(name):
 		os.remove(f"{title}.mp4")
 def verification():
 	for unconverted_title in os.popen('ls *.mp4').splitlines():
-		if f"{unconverted_title.replace(".mp4", "")}.mp3" not in os.popen(f'ls {playlist_name}').read():
+		if f"{unconverted_title.replace('.mp4', '')}.mp3" not in os.popen(f"ls {playlist_name}").read():
 			os.system(f'ffmpeg -i "{title}" -q:a 0 -map a "{playlist_name}/{unconverted_title.replace(".mp4", "")}.mp3"')
 		os.system(f'rm "{title}"')
 for track in result['tracks']['items']:
