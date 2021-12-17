@@ -23,7 +23,7 @@ def getUrl(name):
 	return {'url': videosSearch.result()['result'][0]['link'], 'name': videosSearch.result()['result'][0]['title']}
 def download(name):
 	allstuff = getUrl(name)
-	url, title = allstuff['url'], allstuff['name'].replace('|', '').replace('.', '').replace(',', '')
+	url, title = allstuff['url'], allstuff['name'].replace('|', '').replace('.', '').replace(',', '').replace("it's", "its").replace('~', '')
 	if f"{title}.mp3" in os.popen(f'ls "{playlist_name}"').read():
 		return
 	else:
@@ -34,8 +34,14 @@ def download(name):
 			audioclip.write_audiofile(mp3_file)
 			audioclip.close()
 		except:
-			os.system(f'ffmpeg -i {title}.mp4 -q:a 0 -map a {playlist_name}/{title}.mp3')
+			if title not in os.popen(f'ls {playlist_name}').read():
+				os.system(f'ffmpeg -i {title}.mp4 -q:a 0 -map a {playlist_name}/{title}.mp3')
 		os.remove(f"{title}.mp4")
+def verification():
+	for unconverted_title in os.popen('ls *.mp4').splitlines():
+		if f"{unconverted_title.replace(".mp4", "")}.mp3" not in os.popen(f'ls {playlist_name}').read():
+			os.system(f'ffmpeg -i "{title}" -q:a 0 -map a "{playlist_name}/{unconverted_title.replace(".mp4", "")}.mp3"')
+		os.system(f'rm "{title}"')
 for track in result['tracks']['items']:
 	title = VideosSearch(track['track']['name'], limit = 1).result()['result'][0]['title']
 	print(f"downloading ", end='')
@@ -49,3 +55,4 @@ for track in result['tracks']['items']:
 			os.system(f'rm "{playlist_name}/{title}.mp3"')
 		os.system(f'echo "{title}" >> "{playlist_name}/.fail.txt"')
 		print(track['track']['name'], ': {"statut": "the download encountred some errors, please retry later"}')
+verification()
