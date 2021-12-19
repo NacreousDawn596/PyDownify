@@ -30,3 +30,10 @@ and the playlists are displayed on you file manager on a folder named "PyDownify
 so yeah, that's all...
 
 @android_users ***enjoy!*** lol
+
+
+# FOR MORE INFO SEE:
+
+https://github.com/NacreousDawn596/PyDownify/blob/main/process.txt
+
+***enjoy again! ^^***
