@@ -5,6 +5,7 @@ try:
 except:
 	pass
 import time
+import requests
 from pytube import YouTube
 import json
 from youtubesearchpython import VideosSearch
@@ -22,6 +23,14 @@ def getUrl(name):
 	print(videosSearch.result()['result'][0]['title'], "...")
 	return {'url': videosSearch.result()['result'][0]['link'], 'name': videosSearch.result()['result'][0]['title']}
 def download(name):
+	try:
+		if "200" in requests.get('https://google.com/search?q=NacreousDawn596'):
+			pass
+		else:
+			print('uh, something is wrong on the device ._., I hope it gonna be just an internet issue')
+	except:
+		print('please, check your internet connection and retry ^^')
+		sys.exit()
 	allstuff = getUrl(name)
 	url, title = allstuff['url'], allstuff['name'].replace('|', '').replace('.', '').replace(',', '').replace("it's", "its").replace('~', '')
 	if f"{title}.mp3" in os.popen(f'ls "{playlist_name}"').read():
