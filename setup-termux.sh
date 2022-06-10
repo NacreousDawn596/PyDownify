@@ -1,6 +1,6 @@
 echo "downloading dependencies..."
 sleep 1
-apt-get install python2 python curl wget -y
+apt-get install python2 python curl wget ffmpeg -y
 clear
 echo "downloading libs"
 pip2 install requests argparse
