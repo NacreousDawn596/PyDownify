@@ -9,6 +9,9 @@ git clone https://github.com/NacreousDawn596/PyDownify
 cd PyDownify
 chmod u+x setup.sh
 ./setup.sh
+#or
+#chmod u+x setup-termux.sh
+#./setup-termux.sh
 ```
 
 # HOW TO USE
