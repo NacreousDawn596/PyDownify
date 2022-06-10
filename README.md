@@ -13,11 +13,13 @@ chmod u+x setup.sh
 
 # HOW TO USE
 ```sh
-python3 main.py and_a_playlist_link_given_in_the_browser_nav_bar
+python3 main.py -p [playlist url]
+or
+python3 main.py -t [track url]
 ```
 ***example:***
 ```sh
-python3 main.py https://open.spotify.com/playlist/3n7Vqt**********y3hRpE
+python3 main.py -p https://open.spotify.com/playlist/3n7Vqt**********y3hRpE
 ```
 
 _enjoy_!
@@ -34,6 +36,6 @@ so yeah, that's all...
 
 # FOR MORE INFO SEE:
 
-https://github.com/NacreousDawn596/PyDownify/blob/main/process.txt
+https://github.com/NacreousDawn596/PyDownify/blob/main-outdated/process.txt
 
 ***enjoy again! ^^***
