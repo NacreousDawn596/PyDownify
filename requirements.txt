@@ -1,3 +1,0 @@
-moviepy
-pytube
-youtube-search-python
