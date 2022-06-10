@@ -1,6 +1,6 @@
 echo "downloading dependencies..."
 sleep 1
-sudo apt-get install python2 python3 python3-pip curl wget -y
+sudo apt-get install python2 python3 python3-pip curl wget ffmpeg -y
 clear
 echo "downloading python2 pip"
 python3 get-pip.py
