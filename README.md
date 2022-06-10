@@ -28,7 +28,7 @@ _enjoy_!
 
 it supports now *Android* (termux) too ! ;)
 
-and the playlists are displayed on you file manager on a folder named "PyDownify"
+and the playlists are displayed on you file manager on the /sdcard/Music folder ^^
 so yeah, that's all...
 
 @android_users ***enjoy!*** lol
