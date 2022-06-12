@@ -1,6 +1,6 @@
 # PyDownify
 a little simple spotify playlist downloader :)
-, made by NacreousDawn596 with python3 and some cups of coffe X)
+, made by NacreousDawn596 with python3 and some cups of coffee X)
 
 # HOW TO INSTALL 
 ```sh
