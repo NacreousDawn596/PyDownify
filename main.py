@@ -10,17 +10,20 @@ else:
     sys.exit()
 if "android" in os.popen("uname -a").read().lower():
     try:
-        os.mkdir(f"/sdcard/Music/{download_folder}")
+        os.mkdir(f"/sdcard/Music/\"{download_folder}\"")
     except:
         pass
-    os.chdir(f"/sdcard/Music/{download_folder}")
+    os.chdir(f"/sdcard/Music/\"{download_folder}\"")
 else:
     try:
-        os.mkdir(f"./{download_folder}")
+        os.mkdir(f"./\"{download_folder}\"")
     except:
         pass
-    os.chdir(f"./{download_folder}")
+    os.chdir(f"./\"{download_folder}\"")
 
 for url in urls:
     link, name = get.url(url)
-    threading.Thread(target=get.audio, args=[link, name]).start()
+    if any([name.split(".")[0] in i for i in os.popen("ls").read().splitlines()]):
+        print("no need to redownload", name)
+    else:
+        get.audio(link, name)

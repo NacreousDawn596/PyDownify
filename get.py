@@ -2,13 +2,14 @@ from bs4 import *
 from youtubesearchpython import VideosSearch
 import requests
 import get
-import youtube_dl
+#import youtube_dl
+import yt_dlp as youtube_dl
 import endpoints
 
 def name(link):
     html = requests.get(link.split('?')[0]).text
     html = BeautifulSoup(html, 'html.parser')
-    return html.title.string.split(" | ")[0]
+    return (html.title.string.split(" | ")[0] if html.title else link.split("/")[-1])
 
 def url(link):
     idk = VideosSearch(get.name(link), limit = 1).result()['result'][0]
