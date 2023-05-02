@@ -8,7 +8,7 @@ sudo apt-get install git
 git clone https://github.com/NacreousDawn596/PyDownify
 cd PyDownify
 chmod u+x setup.sh
-./setup.sh
+sudo ./setup.sh
 #or
 #chmod u+x setup-termux.sh
 #./setup-termux.sh
@@ -42,3 +42,5 @@ so yeah, that's all...
 https://github.com/NacreousDawn596/PyDownify/blob/main-outdated/process.txt
 
 ***enjoy again! ^^***
+
+*gonna be adding ios support soon...*
