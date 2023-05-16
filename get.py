@@ -21,12 +21,23 @@ def tracks(link):
 def audio(link, name=""):
     print(f"downloading {name}...")
     ydl_opts = {
+        'writethumbnail': True,
         'format': 'bestaudio/best',
+        'writesubtitles': True,
+        'subtitleslangs': 'en',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
             'preferredquality': '192',
-        }],
+        }, {'key': 'EmbedThumbnail',
+            'already_have_thumbnail': False,
+        }, {'key': 'FFmpegMetadata',
+            'add_metadata': True
+        #}, {'key': 'FFmpegSubtitle',
+        #    'format': 'lrc',
+        #   'already_have_subtitle': False
+        }]
     }
+
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download([link])
